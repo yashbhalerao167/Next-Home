@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0f172a;
+  --color-secondary: #1d4ed8;
+  --color-accent: #f59e0b;
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-text-main: #1e293b;
+  --color-text-muted: #64748b;
+
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  --shadow-premium: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+}
+
+:root {
+  --foreground-rgb: 15, 23, 42;
+  --background-rgb: 248, 250, 252;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background-color: var(--color-background);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .text-gradient {
+    background: linear-gradient(to right, #0f172a, #1d4ed8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+  }
+}
+
+@layer components {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #e2e8f0;
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #cbd5e1;
+  }
+
+  .btn-premium {
+    @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300 ease-in-out transform hover:scale-[1.02] active:scale-[0.98] shadow-md hover:shadow-lg flex items-center justify-center gap-2;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.hover-lift {
+  @apply transition-transform duration-300 hover:-translate-y-1 hover:shadow-premium;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
