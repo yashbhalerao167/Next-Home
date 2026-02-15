@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ReduxProvider from "@/lib/redux/ReduxProvider";
 import { Suspense } from "react";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -38,6 +39,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </ReduxProvider>
+        <Analytics />
       </body>
     </html>
   );
